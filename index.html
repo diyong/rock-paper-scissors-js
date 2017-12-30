@@ -15,43 +15,89 @@
 		game();
 
 		function game() {
+			initialPlayerSelection();
+
 			while (numberOfRounds <= 4) {
-				playerSelection();
 				computerPlay();
 
 				if (lowerCaseChoice == "rock" && compChoice == "paper") {
 					compVictories = ++compVictories;
 					numberOfRounds = ++numberOfRounds;
-					alert("You lose! You chose 'Rock' and the computer chose 'Paper'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You lose! You chose 'Rock' and the computer chose 'Paper'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "rock" && compChoice == "rock") {
 					numberOfRounds = ++numberOfRounds;
-					alert("You tie! You chose 'Rock' and the computer chose 'rock'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You tie! You chose 'Rock' and the computer chose 'rock'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "rock" && compChoice == "scissors") {
 					playerVictories = ++playerVictories;
 					numberOfRounds = ++numberOfRounds;
-					alert("You win! You chose 'Rock' and the computer chose 'Scissors'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You win! You chose 'Rock' and the computer chose 'Scissors'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "paper" && compChoice == "paper") {
 					numberOfRounds = ++numberOfRounds;
-					alert("You tie! You chose 'Paper' and the computer chose 'Paper'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You tie! You chose 'Paper' and the computer chose 'Paper'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "paper" && compChoice == "rock") {
 					playerVictories = ++playerVictories;
 					numberOfRounds = ++numberOfRounds;
-					alert("You win! You chose 'Paper' and the computer chose 'Rock'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You win! You chose 'Paper' and the computer chose 'Rock'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "paper" && compChoice == "scissors") {
 					compVictories = ++compVictories;
 					numberOfRounds = ++numberOfRounds;
-					alert("You lose! You chose 'Paper' and the computer chose 'Scissors'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You lose! You chose 'Paper' and the computer chose 'Scissors'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "scissors" && compChoice == "scissors") {
 					numberOfRounds = ++numberOfRounds;
-					alert("You tie! You chose 'Scissors' and the computer chose 'Scissors'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You tie! You chose 'Scissors' and the computer chose 'Scissors'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "scissors" && compChoice == "rock") {
 					compVictories = ++compVictories;
 					numberOfRounds = ++numberOfRounds;
-					alert("You lose! You chose 'Scissors' and the computer chose 'Rock'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You lose! You chose 'Scissors' and the computer chose 'Rock'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				} else if (lowerCaseChoice == "scissors" && compChoice == "paper") {
 					playerVictories = ++playerVictories;
 					numberOfRounds = ++numberOfRounds;
-					alert("You win! You chose 'Scissors' and the computer chose 'Paper'! Game: " + numberOfRounds + "| Player Victories: " + playerVictories + "| Computer Victories: " + compVictories);
+					alert("You win! You chose 'Scissors' and the computer chose 'Paper'! Game: " + numberOfRounds + " | Player Victories: " + playerVictories + " | Computer Victories: " + compVictories);
+					if (numberOfRounds <= 4) {
+						nextRound();
+					} else {
+						break;
+					}
 				}
 			}
 
@@ -80,7 +126,7 @@
 			return compChoice;
 		}
 
-		function playerSelection() {
+		function initialPlayerSelection() {
 			let playerChoice = prompt("Welcome to Rock-Paper-Scissors: Developer Edition! This game will be best of 5. Please enter 'Rock', 'Paper', or 'Scissors' to start.")
 
 			lowerCaseChoice = playerChoice.toLowerCase();
@@ -91,6 +137,20 @@
 				alert("You did not enter a valid choice. Please refresh and play again.");
 			}
 		}
+
+		function nextRound() {
+
+			let nextPlayerChoice = prompt("Game: " + (+numberOfRounds + 1) + ". Please enter your next choice (Rock, Paper, or Scissors).");
+
+			lowerCaseChoice = nextPlayerChoice.toLowerCase();
+
+			if (lowerCaseChoice == "rock" || lowerCaseChoice == "paper" || lowerCaseChoice == "scissors") {
+				return lowerCaseChoice;
+			} else {
+				alert("You did not enter a valid choice. Please refresh and play again.");
+			}
+		}
+			
 	</script>
 </body>
 </html>
