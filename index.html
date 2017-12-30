@@ -108,6 +108,8 @@
 			} else if (playerVictories == compVictories) {
 				alert("Tie! You have " + playerVictories + " wins compared to the computer's " + compVictories + " wins.");
 			}
+
+			playAgain();
 		}
 
 		function computerPlay() {
@@ -134,23 +136,54 @@
 			if (lowerCaseChoice == "rock" || lowerCaseChoice == "paper" || lowerCaseChoice == "scissors") {
 				return lowerCaseChoice;
 			} else {
-				alert("You did not enter a valid choice. Please refresh and play again.");
+				errorInput();
 			}
 		}
 
 		function nextRound() {
 
-			let nextPlayerChoice = prompt("Game: " + (+numberOfRounds + 1) + ". Please enter your next choice (Rock, Paper, or Scissors).");
+			let playerChoice = prompt("Game: " + (+numberOfRounds + 1) + ". Please enter your next choice (Rock, Paper, or Scissors).");
 
-			lowerCaseChoice = nextPlayerChoice.toLowerCase();
+			lowerCaseChoice = playerChoice.toLowerCase();
 
 			if (lowerCaseChoice == "rock" || lowerCaseChoice == "paper" || lowerCaseChoice == "scissors") {
 				return lowerCaseChoice;
 			} else {
-				alert("You did not enter a valid choice. Please refresh and play again.");
+				errorInput();
 			}
 		}
-			
+
+		function errorInput() {
+			let playerChoice = prompt("You did not enter a valid choice. Please enter 'Rock', 'Paper', or 'Scissors'.")
+
+			lowerCaseChoice = playerChoice.toLowerCase();
+
+			if (lowerCaseChoice == "rock" || lowerCaseChoice == "paper" || lowerCaseChoice == "scissors") {
+				return lowerCaseChoice;
+			} else {
+				errorInput();
+			}
+		}
+
+		function playAgain() {
+			let playAgainChoice = prompt("Do you want to play again? Y/N.");
+
+			lowerCasePlayAgain = playAgainChoice.toLowerCase();
+
+			breakme: if (lowerCasePlayAgain == "y" || lowerCasePlayAgain == "yes") {
+				numberOfRounds = 0;
+				playerVictories = 0;
+				compVictories = 0;
+
+				game();
+			} else if (lowerCasePlayAgain == "n" || lowerCasePlayAgain == "no") {
+				break breakme;
+			} else {
+				alert("You did not enter a valid choice. Please enter Y/N.");
+				playAgain();
+			}
+		}	
+
 	</script>
 </body>
 </html>
