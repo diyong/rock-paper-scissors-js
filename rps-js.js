@@ -7,6 +7,7 @@ let scissorsBtn = document.querySelector("#scissors");
 let playerScore = document.querySelector("#playerScore");
 let compScore = document.querySelector("#compScore");
 let roundCounter = document.querySelector("#roundCounter");
+let tiedCounter = document.querySelector("#tieScore");
 
 // global variables
 let compChoice;
@@ -14,9 +15,10 @@ let playerChoice;
 let playerVictories = 0;
 let compVictories = 0;
 let numberOfRounds = 0;
+let numberOfTies = 0;
 
 instructBtn.addEventListener("click", (e) => {
-	alert("Welcome to Rock-Paper-Scissors! This game is a best of 5. Can you take down the RNG God that is the Computer?");
+	alert("Welcome to Rock-Paper-Scissors! This game is a best of 5 and ties DO NOT count torward anyone's score. Can you take down the RNG God that is the Computer?");
 	alert("Please press the Rock, Paper, or Scissors button to begin.");
 });
 
@@ -24,10 +26,12 @@ resetBtn.addEventListener("click", (e) => {
 	numberOfRounds = 0;
 	playerVictories = 0;
 	compVictories = 0;
+	numberOfTies = 0;
 
 	playerScore.textContent = `Player Score: ${playerVictories}`;
 	compScore.textContent = `Computer Score: ${compVictories}`;
 	roundCounter.textContent = `Round ${numberOfRounds}`;
+	tiedCounter.textContent = `Tied Score: ${numberOfTies}`;
 });
 
 rockBtn.addEventListener("click", (e) => {
@@ -95,7 +99,9 @@ function roundProcessesRock() {
 		roundCounter.textContent = `Round ${numberOfRounds}`;
 		alert("You lose! You chose 'Rock' and the computer chose 'Paper'!");
 	} else if (playerChoice == "rock" && compChoice == "rock") {
+		numberOfTies = ++numberOfTies;
 		numberOfRounds = ++numberOfRounds;
+		tiedCounter.textContent = `Tied Score: ${numberOfTies}`;
 		roundCounter.textContent = `Round ${numberOfRounds}`;
 		alert("You tie! You chose 'Rock' and the computer chose 'Rock'!");
 	} else if (playerChoice == "rock" && compChoice == "scissors") {
@@ -109,7 +115,9 @@ function roundProcessesRock() {
 
 function roundProcessesPaper() {
 	if (playerChoice == "paper" && compChoice == "paper") {
+		numberOfTies = ++numberOfTies;
 		numberOfRounds = ++numberOfRounds;
+		tiedCounter.textContent = `Tied Score: ${numberOfTies}`;
 		roundCounter.textContent = `Round ${numberOfRounds}`;
 		alert("You tie! You chose 'Paper' and the computer chose 'Paper'!");
 	} else if (playerChoice == "paper" && compChoice == "rock") {
@@ -129,7 +137,9 @@ function roundProcessesPaper() {
 
 function roundProcessesScissors() {
 	if (playerChoice == "scissors" && compChoice == "scissors") {
+		numberOfTies = ++numberOfTies;
 		numberOfRounds = ++numberOfRounds;
+		tiedCounter.textContent = `Tied Score: ${numberOfTies}`;
 		roundCounter.textContent = `Round ${numberOfRounds}`;
 		alert("You tie! You chose 'Scissors' and the computer chose 'Scissors'!");
 	} else if (playerChoice == "scissors" && compChoice == "rock") {
