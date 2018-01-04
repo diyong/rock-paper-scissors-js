@@ -130,14 +130,19 @@ function roundProcessesPaper() {
 function roundProcessesScissors() {
 	if (playerChoice == "scissors" && compChoice == "scissors") {
 		numberOfRounds = ++numberOfRounds;
+		roundCounter.textContent = `Round ${numberOfRounds}`;
 		alert("You tie! You chose 'Scissors' and the computer chose 'Scissors'!");
 	} else if (playerChoice == "scissors" && compChoice == "rock") {
 		compVictories = ++compVictories;
 		numberOfRounds = ++numberOfRounds;
+		compScore.textContent = `Computer Score: ${compVictories}`;
+		roundCounter.textContent = `Round ${numberOfRounds}`;
 		alert("You lose! You chose 'Scissors' and the computer chose 'Rock'!");
 	} else if (playerChoice == "scissors" && compChoice == "paper") {
 		playerVictories = ++playerVictories;
 		numberOfRounds = ++numberOfRounds;
+		playerScore.textContent = `Player Score: ${playerVictories}`;
+		roundCounter.textContent = `Round ${numberOfRounds}`;
 		alert("You win! You chose 'Scissors' and the computer chose 'Paper'!");
 	}
 }
@@ -168,64 +173,3 @@ function computerPlay() { // gives choice for comp by random number generator be
 
 	return compChoice;
 }
-
-/*
-
-function game() {
-
-	while (numberOfRounds <= 4) {
-		computerPlay();
-
-
-		} else 
-			if (numberOfRounds <= 4) {
-				nextRound();
-			} else {
-				break;
-			}
-		} else 
-			if (numberOfRounds <= 4) {
-				nextRound();
-			} else {
-				break;
-			}
-		}
-	}
-
-
-}
-
-
-
-
-function nextRound() {
-
-	let playerChoice = prompt("Game: " + (+numberOfRounds + 1) + ". Please enter your next choice (Rock, Paper, or Scissors).");
-
-	lowerCaseChoice = playerChoice.toLowerCase();
-
-	if (lowerCaseChoice == "rock" || lowerCaseChoice == "paper" || lowerCaseChoice == "scissors") {
-		return lowerCaseChoice;
-	} else {
-		errorInput();
-	}
-}
-
-function playAgain() {
-	let playAgainChoice = prompt("Do you want to play again? Y/N.");
-
-	lowerCasePlayAgain = playAgainChoice.toLowerCase();
-
-	breakme: if (lowerCasePlayAgain == "y" || lowerCasePlayAgain == "yes") {
-		numberOfRounds = 0;
-		playerVictories = 0;
-		compVictories = 0;
-
-		game();
-	} else if (lowerCasePlayAgain == "n" || lowerCasePlayAgain == "no") {
-		break breakme;
-	} else {
-		alert("You did not enter a valid choice. Please enter Y/N.");
-		playAgain();
-	}
-}*/

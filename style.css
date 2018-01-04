@@ -12,7 +12,7 @@
 }
 
 #body {
-	margin-top: 75px;
+	margin-top: 25px;
 	grid-column: 2 / 3;
 	height: 100%;
 	display: flex;
